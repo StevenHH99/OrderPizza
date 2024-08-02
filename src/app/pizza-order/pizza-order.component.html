@@ -1,0 +1,111 @@
+<div class="container">
+
+    <h2 class="text-center mt-4 mb-4">Pizza Order</h2>
+    <table class="table ">
+      <thead>
+        <tr>
+          <th scope="col">Toppings</th>
+          <th scope="col">Small (${{pizzaSizes.small.rate }})                        
+              <input type="text" name="small" class="form-control p-0 text-center input-number" value="0" (change)="GetQuantity_small()">       
+          </th>
+          <th scope="col">Medium (${{pizzaSizes.medium.rate }})            
+              <input type="text" name="medium" class="form-control p-0 text-center input-number" value="0" (change)="GetQuantity_medium()"> 
+          </th>
+          <th scope="col">Large (${{pizzaSizes.large.rate }})                      
+              <input type="text" name="large" class="form-control p-0 text-center input-number" value="0" (change)="GetQuantity_large()">          
+          </th>
+          <th scope="col">Extra Large (${{pizzaSizes.extralarge.rate }})                       
+              <input type="text" name="extralarge" class="form-control p-0 text-center input-number" value="0" (change)="GetQuantity_extralarge()">    
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th class="sub-head" colspan="5">Veg Toppings</th>
+        </tr>
+        <tr *ngFor="let veg of toppings.veg; let i = index">
+          <td scope="row">{{veg.name}} (${{veg.rate}})</td>
+          <td>
+            <label class="checkbox-outer">
+              <input id="{{'sm-v-'+i}}" class="small-checkbox" type="checkbox" [value]="veg.rate" data-size="small"
+               (click)="chooseToppingItem($event, veg)">
+              <span class="checkmark"></span>
+            </label>
+          </td>
+          <td>
+            <label class="checkbox-outer">
+              <input id="{{'md-v-'+i}}" class="medium-checkbox" type="checkbox" [value]="veg.rate" data-size="medium"
+               (click)="chooseToppingItem($event, veg)">
+              <span class="checkmark"></span>
+            </label>
+          </td>
+          <td>
+            <label class="checkbox-outer">
+              <input id="{{'lg-v-'+i}}" class="large-checkbox" type="checkbox" [value]="veg.rate" data-size="large"
+                (click)="chooseToppingItem($event, veg)">
+              <span class="checkmark"></span>
+            </label>
+          </td>
+          <td>
+            <label class="checkbox-outer">
+              <input id="{{'xlg-v-'+i}}" class="extralarge-checkbox" type="checkbox" [value]="veg.rate" data-size="extralarge"
+                (click)="chooseToppingItem($event, veg)">
+              <span class="checkmark"></span>
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <th class="sub-head" colspan="5">Non Veg Toppings</th>
+        </tr>
+        <tr *ngFor="let veg of toppings.nonveg; let i = index">
+          <td scope="row">{{veg.name}} (${{veg.rate }})</td>
+          <td >
+            <label class="checkbox-outer">
+              <input id="{{'sm-nv-'+i}}" class="small-checkbox" type="checkbox" [value]="veg.rate" data-size="small"
+               (click)="chooseToppingItem($event, veg)">
+              <span class="checkmark"></span>
+            </label>
+          </td>
+          <td>
+            <label class="checkbox-outer">
+              <input id="{{'md-nv-'+i}}" class="medium-checkbox" type="checkbox" [value]="veg.rate" data-size="medium"
+               (click)="chooseToppingItem($event, veg)">
+              <span class="checkmark"></span>
+            </label>
+          </td>
+          <td>
+            <label class="checkbox-outer">
+              <input id="{{'lg-nv-'+i}}" class="large-checkbox" type="checkbox" [value]="veg.rate" data-size="large"
+                (click)="chooseToppingItem($event, veg)">
+              <span class="checkmark"></span>
+            </label>
+          </td>
+          <td>
+            <label class="checkbox-outer">
+              <input id="{{'xlg-nv-'+i}}" class="extralarge-checkbox" type="checkbox" [value]="veg.rate" data-size="extralarge"
+                (click)="chooseToppingItem($event, veg)">
+              <span class="checkmark"></span>
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <th class="total" colspan="5">Total</th>
+        </tr>
+        <tr>
+          <th>Offers</th>
+          <td>{{offer1}}</td>
+          <td>{{offer2}}</td>
+          <td>{{offer3}}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>{{totalPrice_small}}</td>
+          <td>{{totalPrice_medium}}</td>
+          <td>{{totalPrice_large}}</td>
+          <td>{{totalPrice_extralarge}}</td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </div>
